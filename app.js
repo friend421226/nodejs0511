@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // middleware
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -38,6 +39,10 @@ app.post('/login', (req, res) => {
     } else {
         console.log('欄位尚未填寫完成！')
     }
+});
+
+app.get('*', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 app.listen(3000, () => {
