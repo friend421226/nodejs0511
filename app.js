@@ -31,14 +31,16 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.status(200)
         .render('index', {
+            path: '/',
             pageTitle: 'Book Your Books online',
-            products: products // 將常數 products 賦予給 路由參數 products
+            products
         });
 });
 
 app.get('/login', (req, res) => {
     res.status(200)
         .render('login', {
+            path: '/login',
             pageTitle: 'Login'
         });
 });
@@ -82,4 +84,4 @@ const products = [
         description: '在小薰的逼迫之下，公生不得不參加音樂比賽。為了參加比賽，公生從早到晚不停的練習，但就是無法彈奏出屬於自己的巴哈與蕭邦。此時，公生的面前出現兩位強勁的對手-相座武士與井川繪見，他們曾經是公生的手下敗將，一心想在比賽中擊敗公生雪恥。先上台演奏的武士彈奏出令全場喝采的激昂樂章…',
         imageUrl: 'https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/062/76/0010627615.jpg&v=5315ab5f&w=348&h=348'
     },
-]; // 宣告常數 products 同時賦予它 [] 空陣列
+];
