@@ -10,6 +10,7 @@ const database = require('./utils/database');
 const authRoutes = require('./routes/auth'); 
 const shopRoutes = require('./routes/shop'); 
 const errorRoutes = require('./routes/404');
+const Product = require('./models/product');
 
 ////////////////////////////////////////////////////////////////
 
@@ -22,16 +23,6 @@ app.set('views', 'views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-	console.log('Hello!');
-    next();
-});
-
-app.use((req, res, next) => {
-	console.log('World!');
-    next();
-});
-
 app.use(authRoutes);
 app.use(shopRoutes);
 app.use(errorRoutes);
@@ -39,6 +30,7 @@ app.use(errorRoutes);
 database
 	.sync()
 	.then((result) => {
+        Product.bulkCreate(products);
 		app.listen(3000, () => {
 			console.log('Web Server is running on port 3000');
 		});

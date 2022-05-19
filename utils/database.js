@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 ////////////////////////////////////////////////////////////
 
-const database = new Sequelize('demo', 'root', '12345678', {
+const database = new Sequelize('playground', 'root', '12345678', {
     dialect: 'mysql', 
     host: 'localhost'
 });
