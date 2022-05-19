@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 
 // 第三個區塊 自建模組
 const authRoutes = require('./routes/auth'); 
+const shopRoutes = require('./routes/shop'); 
+const errorRoutes = require('./routes/404');
 
 ////////////////////////////////////////////////////////////////
 
@@ -29,24 +31,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.status(200)
-        .render('index', {
-            path: '/',
-            pageTitle: 'Book Your Books online',
-            products
-        });
-});
 
 app.use(authRoutes);
+app.use(shopRoutes);
+app.use(errorRoutes);
 
-app.get('*', (req, res) => {
-    res.status(404)
-        .render('404', {
-            path: '*',
-            pageTitle: 'Page Not Found'
-        });
-});
 
 app.listen(3000, () => {
 	console.log('Web Server is running on port 3000');
