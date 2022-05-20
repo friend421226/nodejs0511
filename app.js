@@ -49,11 +49,9 @@ app.use(shopRoutes);
 app.use(errorRoutes);
 
 database
-    //.sync()
-	//.sync({ force: true })
-    .sync()
+    // .sync()
+	.sync({ force: true }) // 和 db 連線職，強制重設 db
 	.then((result) => {
-        // User.create({ displayName: 'Admin', email: 'admin@skoob.com', password: '11111111'});
         // Product.bulkCreate(products);
 		app.listen(port, () => {
 			console.log(`Web Server is running on port ${port}`);
