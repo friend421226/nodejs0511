@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const connectFlash = require('connect-flash');
+const csrfProtection = require('csurf');
 
 // 第三個區塊 自建模組
 const database = require('./utils/database');
@@ -35,12 +36,16 @@ app.use(session({
 	}
 })); 
 app.use(connectFlash());
+
+app.use(csrfProtection());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
     res.locals.pageTitle = 'Book Your Books online';
     res.locals.path = req.url;
     res.locals.isLogin = req.session.isLogin || false;
+    res.locals.csrfToken = req.csrfToken();
     next();
 });
 
