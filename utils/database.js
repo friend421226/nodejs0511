@@ -1,5 +1,3 @@
-
-   
 const Sequelize = require('sequelize');
 
 ////////////////////////////////////////////////////////////
@@ -10,7 +8,7 @@ const database = new Sequelize('playground', 'root', '12345678', {
     host: 'localhost'
 });
 
-// const database = new Sequelize ('demo', 'admin', 'admin', {
+// const database = new Sequelize ('cart-demo', 'admin', 'admin', {
 // 	dialect: 'mysql',
 // 	host: '130.211.120.155'
 // });
